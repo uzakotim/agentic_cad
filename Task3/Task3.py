@@ -23,7 +23,6 @@ top_height = h * 0.45
 top_fillet_r = w * 0.16
 bottom_chamfer_r = w * 0.12
 
-# cutter_origin_z = h * 1.5
 cutter_origin_z = h * 1.5
 cutter_sides = 6
 cutter_radius = w * 1.6
@@ -42,18 +41,12 @@ solid = (
     .extrude(top_height)
     .faces(">Z")
     .fillet(top_fillet_r)
+    # FIX 1
     # .faces("<Z")
     # .chamfer(bottom_chamfer_r)
 )
 
-# cutter = (
-#     cq.Workplane("XY", origin=(0, 0, cutter_origin_z))
-#     .polygon(cutter_sides, cutter_radius)
-#     .extrude(cutter_extrude)
-#     .faces(">Z")
-#     .edges()
-#     .chamfer(bottom_chamfer_r)
-# )
+# FIX2
 cutter = (
     cq.Workplane("XY", origin=(0, 0, cutter_origin_z))
     .polygon(cutter_sides, cutter_radius)
@@ -67,6 +60,7 @@ solid = (
     .edges("not %Circle") 
     .fillet(bottom_chamfer_r)
 )
+
 
 # export 
 solid.val().exportStl(f"Task3_{w}x{h}.stl")
