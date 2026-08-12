@@ -46,7 +46,7 @@ solid = (
     # .chamfer(bottom_chamfer_r)
 )
 
-# FIX2
+# FIX 2
 cutter = (
     cq.Workplane("XY", origin=(0, 0, cutter_origin_z))
     .polygon(cutter_sides, cutter_radius)
@@ -60,9 +60,5 @@ solid = (
     .edges("not %Circle") 
     .fillet(bottom_chamfer_r)
 )
-
-
-# export 
-solid.val().exportStl(f"Task3_{w}x{h}.stl")
 
 show_object(solid)

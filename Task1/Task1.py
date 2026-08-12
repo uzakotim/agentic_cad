@@ -155,7 +155,4 @@ tray = tray.cut(port)
 # ============================================================
 
 solid = tray
-
-# Export to STL
-cq.exporters.export(solid, "task1_14x6.9.stl")
-# show_object(solid)
+show_object(solid)

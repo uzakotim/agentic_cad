@@ -2,6 +2,10 @@ import cadquery as cq
 import math
 
 
+# Fallback for show_object when running outside CQ-Editor / GUI
+if 'show_object' not in globals():
+    def show_object(obj, *args, **kwargs):
+        pass
 # ============================================================
 # CHOCOLATE MOLD PARAMETERS
 # ============================================================
@@ -497,89 +501,13 @@ for row in range(ROWS):
 # 12. EXPORT STL
 # ============================================================
 
-cq.exporters.export(
-    model,
-    "task2.stl"
-)
-
+# cq.exporters.export(
+    # model,
+    # "task2.stl"
+# )
 
 # ============================================================
-# INFORMATION
+# RESULT
 # ============================================================
-
-print("==========================================")
-print("Chocolate mold created successfully")
-print("==========================================")
-
-print(
-    "Overall size          :",
-    FLANGE_X,
-    "x",
-    FLANGE_Y,
-    "mm"
-)
-
-print(
-    "Number of cavities    :",
-    COLS * ROWS
-)
-
-print(
-    "Main body height      :",
-    BASE_H,
-    "mm"
-)
-
-print(
-    "Top surface Z         :",
-    TOP_Z,
-    "mm"
-)
-
-print(
-    "Cavity diameter       :",
-    CAVITY_D,
-    "mm"
-)
-
-print(
-    "Cavity depth          :",
-    CAVITY_DEPTH,
-    "mm"
-)
-
-print(
-    "Cavity floor Z        :",
-    CAVITY_FLOOR_Z,
-    "mm"
-)
-
-print(
-    "Bottom support dia.   :",
-    BOTTOM_ISLAND_D,
-    "mm"
-)
-
-print(
-    "Bottom cutout depth   :",
-    BOTTOM_CUT_DEPTH,
-    "mm"
-)
-
-print(
-    "Remaining material    :",
-    REMAINING_MATERIAL,
-    "mm"
-)
-
-print(
-    "Star height           :",
-    STAR_HEIGHT,
-    "mm"
-)
-
-print("------------------------------------------")
-print("Flat top surface: YES")
-print("Raised perimeter rim: NO")
-print("==========================================")
-print("Saved as: task2.stl")
+solid = model
+show_object(solid)
